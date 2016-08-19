@@ -8,8 +8,18 @@ var recipe = {
   ]
 };
 
+var recipe2 = {
+  key : 2,
+  name : "Test stuff",
+  ingredients: [
+    "I 1",
+    "I 2"
+  ]
+};
+
 var recipeList = [
-  recipe
+  recipe,
+  recipe2
 ];
 
 
@@ -25,9 +35,9 @@ var Ingredient = React.createClass({
 
 var IngredientList = React.createClass({
   render: function() {
-    var ingNodes = this.props.ingredients.map(function(text) {
+    var ingNodes = this.props.ingredients.map(function(text, key) {
       return (
-        <Ingredient text={text} />
+        <Ingredient text={text} key={key}/>
       )
     });
     
@@ -42,7 +52,7 @@ var IngredientList = React.createClass({
 var RecipePanel = React.createClass({
   render: function() {
     return (
-      <div className="tab-pane active" id={this.props.recipe.id}>
+      <div className="tab-pane active" id={this.props.recipe.key}>
         <IngredientList ingredients={this.props.recipe.ingredients}/>
         <div>
           <button className="btn btn-primary">Edit</button>
@@ -72,11 +82,22 @@ var TabPills = React.createClass({
         <RecipeTab key={recipe.key} recipe={recipe} />
       );
     });
+      
+    var recipePanels = this.props.recipes.map(function(recipe) {
+      return (
+        <RecipePanel recipe={recipe} key={recipe.key} />
+      ) 
+    });
     
     return (
-      <ul className="nav nav-pills">
-        {tabNodes}
-      </ul>
+      <div>
+        <ul className="nav nav-pills">
+          {tabNodes}
+        </ul>
+        <div className="tab-content">
+          {recipePanels}
+        </div>
+      </div>
     )
   }
 });
