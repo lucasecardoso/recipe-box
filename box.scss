@@ -1,0 +1,68 @@
+$primary-color: #C63D0F;
+$secondary-color: #6E7D6C;
+$content-color: #FDF3E7;
+$highlight-color: #B4CCB1;
+
+body {
+  padding-top: 70px;
+  background-color: $secondary-color;
+}
+
+.navbar-inverse .navbar-brand {
+  color: black;
+}
+
+.navbar {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  .nav {
+    li {
+      a {
+        color: black;
+      }
+    }
+  }
+}
+
+i {
+  color: $highlight-color;
+}
+
+.nav-pills {
+  li.active {
+    a, a:focus, a:hover {
+      background-color: $content-color;
+      color: #000;
+    }
+  }
+  
+  li {
+    a {
+      background-color: #3B3738;
+      color: #fff;
+      border-radius: 5px 5px 0px 0px;
+    }
+  }
+}
+
+.step-group {
+  .step {
+    background-color: $highlight-color;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+  }
+  margin-top: 10px;
+  li {
+    color: #000;
+    text-align: left;
+  }
+  
+}
+
+.tab-content {
+  color : white;
+  background-color: $content-color;
+  padding : 5px 15px;
+  border-radius: 0px 0px 5px 5px;
+}

@@ -1,0 +1,54 @@
+/* line 6, J:/web/recipe-box/box.scss */
+body {
+  padding-top: 70px;
+  background-color: #6E7D6C; }
+
+/* line 11, J:/web/recipe-box/box.scss */
+.navbar-inverse .navbar-brand {
+  color: black; }
+
+/* line 15, J:/web/recipe-box/box.scss */
+.navbar {
+  background-color: #C63D0F;
+  border-color: #C63D0F; }
+  /* line 20, J:/web/recipe-box/box.scss */
+  .navbar .nav li a {
+    color: black; }
+
+/* line 27, J:/web/recipe-box/box.scss */
+i {
+  color: #B4CCB1; }
+
+/* line 33, J:/web/recipe-box/box.scss */
+.nav-pills li.active a, .nav-pills li.active a:focus, .nav-pills li.active a:hover {
+  background-color: #FDF3E7;
+  color: #000; }
+
+/* line 40, J:/web/recipe-box/box.scss */
+.nav-pills li a {
+  background-color: #3B3738;
+  color: #fff;
+  border-radius: 5px 5px 0px 0px; }
+
+/* line 48, J:/web/recipe-box/box.scss */
+.step-group {
+  margin-top: 10px; }
+  /* line 49, J:/web/recipe-box/box.scss */
+  .step-group .step {
+    background-color: #B4CCB1;
+    font-weight: bold;
+    color: #000;
+    text-align: left; }
+  /* line 56, J:/web/recipe-box/box.scss */
+  .step-group li {
+    color: #000;
+    text-align: left; }
+
+/* line 63, J:/web/recipe-box/box.scss */
+.tab-content {
+  color: white;
+  background-color: #FDF3E7;
+  padding: 5px 15px;
+  border-radius: 0px 0px 5px 5px; }
+
+/*# sourceMappingURL=box.css.map */
