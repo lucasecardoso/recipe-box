@@ -52,7 +52,8 @@ var IngredientList = React.createClass({
 var RecipePanel = React.createClass({
   render: function() {
     return (
-      <div className="tab-pane active" id={this.props.recipe.key}>
+      //Set the first element as active
+      <div className={this.props.recipe.key === 1 ? "tab-pane active" : "tab-pane"} id={this.props.recipe.key}>
         <IngredientList ingredients={this.props.recipe.ingredients}/>
         <div>
           <button className="btn btn-primary">Edit</button>
@@ -66,7 +67,7 @@ var RecipePanel = React.createClass({
 var RecipeTab = React.createClass({
   render: function() {
     return (
-      <li key={this.props.recipe.key}>
+      <li className={this.props.recipe.key === 1 ? "active" : "" } key= {this.props.recipe.key}>
         <a href={"#" + this.props.recipe.key} data-toggle="tab">
           {this.props.recipe.name}
         </a>
@@ -101,6 +102,15 @@ var TabPills = React.createClass({
     )
   }
 });
+
+class EditButton extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick()
+}
 
 
 ReactDOM.render(
