@@ -1,26 +1,4 @@
-var recipe = {
-  key : 1,
-  name: "Bolognesa sauce",
-  ingredients: [
-    "Onions",
-    "Bell peppers",
-    "Meat"
-  ]
-};
 
-var recipe2 = {
-  key : 2,
-  name : "Test stuff",
-  ingredients: [
-    "I 1",
-    "I 2"
-  ]
-};
-
-var recipeList = [
-  recipe,
-  recipe2
-];
 
 
 var Ingredient = React.createClass({
@@ -50,19 +28,25 @@ var IngredientList = React.createClass({
 });
 
 var RecipePanel = React.createClass({
+  
+  handleClick: function(e) {
+    this.props.onRecipeEdit(this.props.recipe);
+  },
+  
   render: function() {
     return (
       //Set the first element as active
       <div className={this.props.recipe.key === 1 ? "tab-pane active" : "tab-pane"} id={this.props.recipe.key}>
         <IngredientList ingredients={this.props.recipe.ingredients}/>
         <div>
-          <button className="btn btn-primary">Edit</button>
+          <button className="btn btn-primary" onClick={this.handleClick}>Edit</button>
           <button className="btn btn-danger">Delete</button>
         </div>
       </div>
     );
   }
 });
+
 
 var RecipeTab = React.createClass({
   render: function() {
@@ -77,18 +61,52 @@ var RecipeTab = React.createClass({
 });
 
 var TabPills = React.createClass({
+  
+  getInitialState: function() {
+    var recipe = {
+      key : 1,
+      name: "Bolognesa sauce",
+      ingredients: [
+        "Onions",
+        "Bell peppers",
+        "Meat"
+      ]
+    };
+
+    var recipe2 = {
+      key : 2,
+      name : "Test stuff",
+      ingredients: [
+        "I 1",
+        "I 2"
+      ]
+    };
+
+    var recipeList = [
+      recipe,
+      recipe2
+    ];
+    
+    return {recipeList};
+  },
+  
+  handleRecipeEdit: function(recipe) {
+    console.log(JSON.stringify(recipe));
+  },
+  
   render: function() {
-    var tabNodes = this.props.recipes.map(function(recipe) {
+    var tabNodes = this.state.recipeList.map(function(recipe) {
       return (
         <RecipeTab key={recipe.key} recipe={recipe} />
       );
     });
       
-    var recipePanels = this.props.recipes.map(function(recipe) {
+    var recipePanels = this.state.recipeList.map(function(recipe) {
       return (
-        <RecipePanel recipe={recipe} key={recipe.key} />
+        <RecipePanel recipe={recipe} key={recipe.key} 
+          onRecipeEdit={this.handleRecipeEdit}/>
       ) 
-    });
+    }, this);
     
     return (
       <div>
@@ -103,17 +121,9 @@ var TabPills = React.createClass({
   }
 });
 
-class EditButton extends React.Component {
-  constructor() {
-    super();
-    this.handleClick = this.handleClick.bind(this);
-  }
-  
-  handleClick()
-}
 
 
 ReactDOM.render(
-  <TabPills recipes={recipeList}/>,
+  <TabPills />,
   document.getElementById('content')
 );
