@@ -1,6 +1,3 @@
-
-
-
 var Ingredient = React.createClass({
   render: function() {
     return (
@@ -121,6 +118,28 @@ var TabPills = React.createClass({
   }
 });
 
+var EditIngredientInput = React.createClass({
+  getInitialState: function() {
+    if (this.props.ingredient !== undefined)
+      return { ingredient: this.props.ingredient };
+    else 
+      return { ingredient: '' };
+  },
+  
+  handleIngredientChange: function(e) {
+    this.setState({ ingredient: e.target.value });
+  }
+  
+  render: function() {
+    return (
+      <input
+        type="text"
+        placeholder="Type an ingredient"
+        value={this.state.ingredient}
+        onChange={this.handleIngredientChange} />
+    )
+  }
+});
 
 
 ReactDOM.render(
